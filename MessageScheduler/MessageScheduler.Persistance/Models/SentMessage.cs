@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
-namespace MessageScheduler.Models
+namespace MessageScheduler.Persistence.Models
 {
     public class SentMessage
     {
