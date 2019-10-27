@@ -1,0 +1,17 @@
+.vs/
+bin/
+obj/
+node_modules/
+TestResults/
+Paket/paket-files/
+**/Properties/launchSettings.json
+
+*.user
+/binaries/
+package-lock.json
+local.settings.json
+*/.vscode/
+yarn-error.log
+.vscode/
+
+.#*
