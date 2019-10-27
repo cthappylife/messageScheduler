@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29102.190
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MessageScheduler.Functions", "MessageScheduler\MessageScheduler.Functions.csproj", "{D9C280A2-DCB1-45B0-B9A1-2723371F0BA4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MessageScheduler.Functions", "MessageScheduler\MessageScheduler.Functions.csproj", "{D9C280A2-DCB1-45B0-B9A1-2723371F0BA4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MessageScheduler.Models", "ClassLibrary1\MessageScheduler.Models.csproj", "{B4C3C3D4-C4FA-40D7-9634-7769F23C3ECF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{D9C280A2-DCB1-45B0-B9A1-2723371F0BA4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D9C280A2-DCB1-45B0-B9A1-2723371F0BA4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D9C280A2-DCB1-45B0-B9A1-2723371F0BA4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B4C3C3D4-C4FA-40D7-9634-7769F23C3ECF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B4C3C3D4-C4FA-40D7-9634-7769F23C3ECF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B4C3C3D4-C4FA-40D7-9634-7769F23C3ECF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B4C3C3D4-C4FA-40D7-9634-7769F23C3ECF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
