@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace MessageScheduler.Models
+﻿namespace MessageScheduler.Models
 {
     public class Receiver
     {

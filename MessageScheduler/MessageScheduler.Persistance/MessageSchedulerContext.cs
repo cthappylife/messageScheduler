@@ -1,5 +1,4 @@
-﻿using System;
-using MessageScheduler.Persistence.Configurations;
+﻿using MessageScheduler.Persistence.Configurations;
 using MessageScheduler.Persistence.Models;
 using Microsoft.EntityFrameworkCore;
 

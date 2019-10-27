@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using MessageScheduler.Persistence;
 using Microsoft.Azure.WebJobs;
 using Microsoft.Azure.WebJobs.Host;
@@ -18,9 +19,11 @@ namespace MessageScheduler.Functions
         }
 
         [FunctionName("CheckScheduler")]
-        public void Run([TimerTrigger("0 */5 * * * *")]TimerInfo myTimer, ILogger log)
+        public void Run([TimerTrigger("*/5 * * * * *")]TimerInfo myTimer, ILogger log)
         {
-            log.LogInformation($"C# Timer trigger function executed at: {DateTime.Now}");
+            log.LogInformation($"Function CheckScheduler starts running at: {DateTime.Now}");
+
+            
         }
     }
 }

@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace MessageScheduler.Models
 {
@@ -8,8 +6,8 @@ namespace MessageScheduler.Models
     {
         public int Id { get; set; }
         public RecurrenceType RecurrenceType { get; set; }
-        public string Time { get; set; }
-        public int Date { get; set; }
+        public DateTime Time { get; set; }
+        public ushort Day { get; set; }
         public WeekDays WeekDays { get; set; }
     }
 }

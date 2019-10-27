@@ -4,6 +4,7 @@ using Microsoft.Azure.Functions.Extensions.DependencyInjection;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using MessageScheduler.Service;
 
 [assembly: FunctionsStartup(typeof(MessageScheduler.Functions.Startup))]
 namespace MessageScheduler.Functions
@@ -20,7 +21,8 @@ namespace MessageScheduler.Functions
             builder.Services
                 .AddOptions()
                 .AddLogging()
-                .AddDbContext<MessageSchedulerContext>(opt =>opt.UseSqlServer(connectionString));
+                .AddDbContext<MessageSchedulerContext>(opt => opt.UseSqlServer(connectionString))
+                .AddSingleton<IMessagesQuery, MessagesQuery>();
         }
 
         private void InitConfiguration()
