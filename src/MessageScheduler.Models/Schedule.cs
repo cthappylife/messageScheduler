@@ -6,8 +6,6 @@ namespace MessageScheduler.Models
     {
         public int Id { get; set; }
 
-        public DateTime NextExecutionDay => GetNextExecutionDay();
-
-        protected abstract DateTime GetNextExecutionDay();
+        public abstract bool ShouldExecuteToday();
     }
 }

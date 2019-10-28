@@ -6,14 +6,12 @@ namespace MessageScheduler.Models.Schedules
     {
         public ushort MonthDay { get; set; }
 
-        protected override DateTime GetNextExecutionDay()
+        public override bool ShouldExecuteToday()
         {
             var today = DateTime.Today;
             var executionDayThisMonth = new DateTime(today.Year, today.Month, MonthDay);
 
-            return DateTime.Today > executionDayThisMonth
-                ? executionDayThisMonth.AddMonths(1)
-                : executionDayThisMonth;
+            return today == executionDayThisMonth;
         }
     }
 }

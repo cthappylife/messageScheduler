@@ -1,12 +1,10 @@
-﻿using System;
-
-namespace MessageScheduler.Models.Schedules
+﻿namespace MessageScheduler.Models.Schedules
 {
     public class DailySchedule : Schedule
     {
-        protected override DateTime GetNextExecutionDay()
+        public override bool ShouldExecuteToday()
         {
-            return DateTime.Today;
+            return true;
         }
     }
 }

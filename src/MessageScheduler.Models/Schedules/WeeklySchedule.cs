@@ -6,15 +6,9 @@ namespace MessageScheduler.Models.Schedules
     {
         public WeekDays WeekDays { get; set; }
 
-        protected override DateTime GetNextExecutionDay()
+        public override bool ShouldExecuteToday()
         {
-            var executionDay = DateTime.Today;
-            while (!ContainsDayOfWeek(WeekDays, executionDay.DayOfWeek)) // DayOfWeek is 0 to 6, sunday 0
-            {
-                executionDay = executionDay.AddDays(1);
-            }
-
-            return executionDay;
+            return ContainsDayOfWeek(WeekDays, DateTime.Today.DayOfWeek); // DayOfWeek is 0 to 6, sunday 0
         }
 
         private static bool ContainsDayOfWeek(WeekDays weekDays, DayOfWeek dayOfWeek)

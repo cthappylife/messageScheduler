@@ -15,8 +15,6 @@ namespace MessageScheduler.Persistence.Configurations
                 .HasValue<WeeklySchedule>((int)RecurrenceType.Weekly)
                 .HasValue<MonthlySchedule>((int)RecurrenceType.Monthly)
                 .HasValue<CustomSchedule>((int)RecurrenceType.Custom);
-
-            builder.Ignore(x => x.NextExecutionDay);
         }
     }
 }
