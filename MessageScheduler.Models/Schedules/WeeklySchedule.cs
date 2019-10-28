@@ -1,21 +1,22 @@
 ﻿using System;
-using MessageScheduler.Persistence.Models;
 
-namespace MessageScheduler.Service
+namespace MessageScheduler.Models.Schedules
 {
-    public class WeeklySchedule : IExecutionTimeResolver
+    public class WeeklySchedule : Schedule
     {
-        public DateTime Get(Schedule schedule)
+        public WeekDays WeekDays { get; set; }
+
+        protected override DateTime GetNextExecutionTime()
         {
             var executionTime = DateTime.Today
-                .AddHours(schedule.Time.Hour)
-                .AddMinutes(schedule.Time.Minute);
+                .AddHours(Time.Hour)
+                .AddMinutes(Time.Minute);
 
             executionTime = DateTime.Now > executionTime
                 ? executionTime.AddDays(1)
                 : executionTime;
 
-            while (!ContainsDayOfWeek(schedule.WeekDays, executionTime.DayOfWeek)) // DayOfWeek is 0 to 6, sunday 0
+            while (!ContainsDayOfWeek(WeekDays, executionTime.DayOfWeek)) // DayOfWeek is 0 to 6, sunday 0
             {
                 executionTime = executionTime.AddDays(1);
             }

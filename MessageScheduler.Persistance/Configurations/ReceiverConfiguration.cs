@@ -1,4 +1,4 @@
-﻿using MessageScheduler.Persistence.Models;
+﻿using MessageScheduler.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 

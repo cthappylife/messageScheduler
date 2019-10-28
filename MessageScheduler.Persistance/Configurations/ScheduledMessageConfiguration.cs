@@ -1,4 +1,4 @@
-﻿using MessageScheduler.Persistence.Models;
+﻿using MessageScheduler.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
@@ -9,9 +9,6 @@ namespace MessageScheduler.Persistence.Configurations
         public void Configure(EntityTypeBuilder<ScheduledMessage> builder)
         {
             builder.ToTable("ScheduledMessage");
-            //builder.HasKey(x => x.Id);
-            //builder.Property(x => x.Id)
-            //    .UseSqlServerIdentityColumn();
 
             builder.Property(x => x.Message)
                 .HasColumnName("Message")

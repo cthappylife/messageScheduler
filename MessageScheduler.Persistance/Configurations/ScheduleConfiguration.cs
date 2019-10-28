@@ -1,4 +1,5 @@
-﻿using MessageScheduler.Persistence.Models;
+﻿using MessageScheduler.Models;
+using MessageScheduler.Models.Schedules;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
@@ -8,24 +9,14 @@ namespace MessageScheduler.Persistence.Configurations
     {
         public void Configure(EntityTypeBuilder<Schedule> builder)
         {
-            builder.ToTable("Schedule");
-            //builder.HasKey(x => x.Id);
-            //builder.Property(x => x.Id)
-            //    .UseSqlServerIdentityColumn();
+            builder.ToTable(nameof(Schedule))
+                .HasDiscriminator<int>("RecurrenceType")
+                .HasValue<DailySchedule>((int)RecurrenceType.Daily)
+                .HasValue<WeeklySchedule>((int)RecurrenceType.Weekly)
+                .HasValue<MonthlySchedule>((int)RecurrenceType.Monthly)
+                .HasValue<CustomSchedule>((int)RecurrenceType.Custom);
 
-            builder.Property(x => x.RecurrenceType)
-                .HasColumnName("RecurrenceType")
-                .IsRequired();
-
-            builder.Property(x => x.Time)
-                .HasColumnName("Time")
-                .IsRequired();
-
-            builder.Property(x => x.Day)
-                .HasColumnName("Day");
-
-            builder.Property(x => x.WeekDays)
-                .HasColumnName("Weekdays");
+            builder.Ignore(x => x.NextExecutionTime);
         }
     }
 }

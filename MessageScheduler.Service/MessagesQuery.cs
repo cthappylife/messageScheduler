@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using MessageScheduler.Models;
 using MessageScheduler.Persistence;
-using MessageScheduler.Persistence.Models;
 
 namespace MessageScheduler.Service
 {
