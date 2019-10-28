@@ -6,9 +6,9 @@ namespace MessageScheduler.Models.Schedules
     {
         public DateTime Date { get; set; }
 
-        protected override DateTime GetNextExecutionTime()
+        protected override DateTime GetNextExecutionDay()
         {
-            return Date.AddHours(Time.Hour).AddMinutes(Time.Minute);
+            return Date;
         }
     }
 }

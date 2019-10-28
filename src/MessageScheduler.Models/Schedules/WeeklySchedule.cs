@@ -6,25 +6,18 @@ namespace MessageScheduler.Models.Schedules
     {
         public WeekDays WeekDays { get; set; }
 
-        protected override DateTime GetNextExecutionTime()
+        protected override DateTime GetNextExecutionDay()
         {
-            var executionTime = DateTime.Today
-                .AddHours(Time.Hour)
-                .AddMinutes(Time.Minute);
-
-            executionTime = DateTime.Now > executionTime
-                ? executionTime.AddDays(1)
-                : executionTime;
-
-            while (!ContainsDayOfWeek(WeekDays, executionTime.DayOfWeek)) // DayOfWeek is 0 to 6, sunday 0
+            var executionDay = DateTime.Today;
+            while (!ContainsDayOfWeek(WeekDays, executionDay.DayOfWeek)) // DayOfWeek is 0 to 6, sunday 0
             {
-                executionTime = executionTime.AddDays(1);
+                executionDay = executionDay.AddDays(1);
             }
 
-            return executionTime;
+            return executionDay;
         }
 
-        private bool ContainsDayOfWeek(WeekDays weekDays, DayOfWeek dayOfWeek)
+        private static bool ContainsDayOfWeek(WeekDays weekDays, DayOfWeek dayOfWeek)
         {
             return IsBitSet((byte)weekDays, (int)dayOfWeek);
         }

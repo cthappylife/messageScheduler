@@ -4,14 +4,16 @@ using MessageScheduler.Persistence;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace MessageScheduler.Persistence.Migrations
 {
     [DbContext(typeof(MessageSchedulerContext))]
-    partial class MessageSchedulerContextModelSnapshot : ModelSnapshot
+    [Migration("20191028212003_removeExecutionTime")]
+    partial class removeExecutionTime
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -64,8 +66,6 @@ namespace MessageScheduler.Persistence.Migrations
                     b.Property<bool>("IsActive")
                         .HasColumnName("IsActive");
 
-                    b.Property<DateTime?>("LastSentDate");
-
                     b.Property<string>("Message")
                         .IsRequired()
                         .HasColumnName("Message")
@@ -84,6 +84,28 @@ namespace MessageScheduler.Persistence.Migrations
                     b.HasIndex("ScheduleId");
 
                     b.ToTable("ScheduledMessage");
+                });
+
+            modelBuilder.Entity("MessageScheduler.Models.SentMessage", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("ScheduledMessageId");
+
+                    b.Property<bool>("SentSuccessfully")
+                        .HasColumnName("SentSuccessfully");
+
+                    b.Property<DateTime>("SentTime")
+                        .HasColumnName("SentTime")
+                        .HasColumnType("date");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ScheduledMessageId");
+
+                    b.ToTable("SentMessage");
                 });
 
             modelBuilder.Entity("MessageScheduler.Models.Schedules.CustomSchedule", b =>
@@ -130,6 +152,14 @@ namespace MessageScheduler.Persistence.Migrations
                     b.HasOne("MessageScheduler.Models.Schedule", "Schedule")
                         .WithMany()
                         .HasForeignKey("ScheduleId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("MessageScheduler.Models.SentMessage", b =>
+                {
+                    b.HasOne("MessageScheduler.Models.ScheduledMessage", "ScheduledMessage")
+                        .WithMany()
+                        .HasForeignKey("ScheduledMessageId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618

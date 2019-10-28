@@ -16,8 +16,6 @@ namespace MessageScheduler.Persistence
 
         public DbSet<ScheduledMessage> ScheduledMessages { get; set; }
 
-        public DbSet<SentMessage> SentMessages { get; set; }
-
         public MessageSchedulerContext(DbContextOptions<MessageSchedulerContext> options) 
             : base(options)
         {}
@@ -28,7 +26,6 @@ namespace MessageScheduler.Persistence
             modelBuilder.ApplyConfiguration(new ReceiverConfiguration());
             modelBuilder.ApplyConfiguration(new ScheduleConfiguration());
             modelBuilder.ApplyConfiguration(new ScheduledMessageConfiguration());
-            modelBuilder.ApplyConfiguration(new SentMessageConfiguration());
         }
     }
 }

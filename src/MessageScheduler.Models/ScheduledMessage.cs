@@ -1,4 +1,6 @@
-﻿namespace MessageScheduler.Models
+﻿using System;
+
+namespace MessageScheduler.Models
 {
     public class ScheduledMessage
     {
@@ -7,6 +9,7 @@
         public int ReceiverId { get; set; }
         public int ScheduleId { get; set; }
         public bool IsActive { get; set; }
+        public DateTime? LastSentDate { get; set; }
 
         public Receiver Receiver { get; set; }
         public Schedule Schedule { get; set; }
