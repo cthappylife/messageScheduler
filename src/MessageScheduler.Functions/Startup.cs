@@ -22,7 +22,7 @@ namespace MessageScheduler.Functions
                 .AddOptions()
                 .AddLogging()
                 .AddDbContext<MessageSchedulerContext>(opt => opt.UseSqlServer(connectionString))
-                .AddSingleton<IMessagesQuery, MessagesQuery>();
+                .AddTransient<IMessagesQuery, MessagesQuery>();
         }
 
         private void InitConfiguration()
