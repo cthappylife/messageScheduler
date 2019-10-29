@@ -6,6 +6,8 @@ using Microsoft.Azure.WebJobs;
 using Microsoft.Azure.WebJobs.Host;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
+using Twilio.Rest.Api.V2010.Account;
+using Twilio.Types;
 
 namespace MessageScheduler.Functions
 {
@@ -24,19 +26,25 @@ namespace MessageScheduler.Functions
         }
 
         [FunctionName("CheckSchedule")]
-        public void Run([TimerTrigger("%CheckScheduleTimer%")]TimerInfo myTimer, ILogger log)
+        [return: TwilioSms(AccountSidSetting = "TwilioAccountSid         ", AuthTokenSetting = "TwilioAuthToken", From = "TwilioPhoneNumber")]
+        public CreateMessageOptions Run([TimerTrigger("%CheckScheduleTimer%")]TimerInfo myTimer, ILogger log)
         {
             log.LogInformation($"Function CheckSchedule starts running at: {DateTime.Now}");
 
-            var messages = _messagesQuery.GetMessagesToSend();
+            //var messages = _messagesQuery.GetMessagesToSend();
 
-            if (!messages.Any())
+            //if (!messages.Any())
+            //{
+            //    log.LogInformation("No message to sent today");
+            //    return;
+            //}
+
+            var message = new CreateMessageOptions(new PhoneNumber("+358409309966"))
             {
-                log.LogInformation("No message to sent today");
-                return;
-            }
+                Body = "Hello there"
+            };
 
-            //TODO send message
+            return message;
         }
     }
 }
