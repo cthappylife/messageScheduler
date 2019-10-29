@@ -26,7 +26,7 @@ namespace MessageScheduler.Functions
         }
 
         [FunctionName("CheckSchedule")]
-        [return: TwilioSms(AccountSidSetting = "TwilioAccountSid         ", AuthTokenSetting = "TwilioAuthToken", From = "TwilioPhoneNumber")]
+        [return: TwilioSms(AccountSidSetting = "TwilioAccountSid", AuthTokenSetting = "TwilioAuthToken", From = "+14058966282")]
         public CreateMessageOptions Run([TimerTrigger("%CheckScheduleTimer%")]TimerInfo myTimer, ILogger log)
         {
             log.LogInformation($"Function CheckSchedule starts running at: {DateTime.Now}");
