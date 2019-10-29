@@ -5,7 +5,19 @@ using Microsoft.EntityFrameworkCore;
 
 namespace MessageScheduler.Persistence
 {
-    public class MessageSchedulerContext : DbContext
+    public interface IMessageSchedulerContext
+    {
+        DbSet<Receiver> Receivers { get; set; }
+
+        DbSet<CustomSchedule> CustomSchedules { get; set; }
+        DbSet<DailySchedule> DailySchedules { get; set; }
+        DbSet<WeeklySchedule> WeeklySchedules { get; set; }
+        DbSet<MonthlySchedule> MonthlySchedules { get; set; }
+
+        DbSet<ScheduledMessage> ScheduledMessages { get; set; }
+    }
+
+    public class MessageSchedulerContext : DbContext, IMessageSchedulerContext
     {
         public DbSet<Receiver> Receivers { get; set; }
 

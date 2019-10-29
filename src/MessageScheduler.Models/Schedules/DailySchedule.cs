@@ -2,7 +2,7 @@
 {
     public class DailySchedule : Schedule
     {
-        public override bool ShouldExecuteToday()
+        public override bool IsTodayScheduled()
         {
             return true;
         }

@@ -6,7 +6,7 @@ namespace MessageScheduler.Models.Schedules
     {
         public WeekDays WeekDays { get; set; }
 
-        public override bool ShouldExecuteToday()
+        public override bool IsTodayScheduled()
         {
             return ContainsDayOfWeek(WeekDays, DateTime.Today.DayOfWeek); // DayOfWeek is 0 to 6, sunday 0
         }

@@ -6,6 +6,6 @@ namespace MessageScheduler.Models
     {
         public int Id { get; set; }
 
-        public abstract bool ShouldExecuteToday();
+        public abstract bool IsTodayScheduled();
     }
 }

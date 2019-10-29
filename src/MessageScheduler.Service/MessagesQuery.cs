@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using MessageScheduler.Models;
 using MessageScheduler.Persistence;
 
@@ -14,20 +13,20 @@ namespace MessageScheduler.Service
 
     public class MessagesQuery : IMessagesQuery
     {
-        private readonly MessageSchedulerContext _messageSchedulerContext;
+        private readonly IMessageSchedulerContext _messageSchedulerContext;
 
-        public MessagesQuery(MessageSchedulerContext messageSchedulerContext)
+        public MessagesQuery(IMessageSchedulerContext messageSchedulerContext)
         {
             _messageSchedulerContext = messageSchedulerContext;
         }
 
         public IEnumerable<ScheduledMessage> GetMessagesToSend()
         {
-            return _messageSchedulerContext.ScheduledMessages
-                .Where(x => x.IsActive
-                            && x.Schedule.ShouldExecuteToday()
-                            && x.LastSentDate != DateTime.Today)
-                .ToArray();
+            var messages = _messageSchedulerContext.ScheduledMessages.ToArray();
+            return  messages.Where(x => x.IsActive
+                            && x.Schedule != null
+                            && x.Schedule.IsTodayScheduled()
+                            && x.LastSentDate != DateTime.Today);
         }
     }
 }

@@ -17,6 +17,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{F411AB73
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MessageScheduler.Models.Tests", "tests\MessageScheduler.Models.Tests\MessageScheduler.Models.Tests.csproj", "{5EC932B9-B2F8-4A8F-A8F3-D6CC0969D254}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "messageScheduler.Service.Tests", "tests\messageScheduler.Service.Tests\messageScheduler.Service.Tests.csproj", "{30497BEC-2C49-4F56-89FF-A4C01D2B7ACA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -43,6 +45,10 @@ Global
 		{5EC932B9-B2F8-4A8F-A8F3-D6CC0969D254}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5EC932B9-B2F8-4A8F-A8F3-D6CC0969D254}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5EC932B9-B2F8-4A8F-A8F3-D6CC0969D254}.Release|Any CPU.Build.0 = Release|Any CPU
+		{30497BEC-2C49-4F56-89FF-A4C01D2B7ACA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{30497BEC-2C49-4F56-89FF-A4C01D2B7ACA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{30497BEC-2C49-4F56-89FF-A4C01D2B7ACA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{30497BEC-2C49-4F56-89FF-A4C01D2B7ACA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -53,6 +59,7 @@ Global
 		{334BF3E4-584D-4E2B-9685-94183945C59D} = {975D11CD-25B2-4DCF-A2CC-FEA7DE46D56E}
 		{5E418CE5-8BEE-4E74-B360-88165A85D1A6} = {975D11CD-25B2-4DCF-A2CC-FEA7DE46D56E}
 		{5EC932B9-B2F8-4A8F-A8F3-D6CC0969D254} = {F411AB73-173A-4685-9831-C95A650298C9}
+		{30497BEC-2C49-4F56-89FF-A4C01D2B7ACA} = {F411AB73-173A-4685-9831-C95A650298C9}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A8B19D53-AAE8-459C-9D05-59616B58D0BD}
