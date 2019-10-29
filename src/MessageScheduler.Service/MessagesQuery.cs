@@ -13,9 +13,9 @@ namespace MessageScheduler.Service
 
     public class MessagesQuery : IMessagesQuery
     {
-        private readonly IMessageSchedulerContext _messageSchedulerContext;
+        private readonly MessageSchedulerContext _messageSchedulerContext;
 
-        public MessagesQuery(IMessageSchedulerContext messageSchedulerContext)
+        public MessagesQuery(MessageSchedulerContext messageSchedulerContext)
         {
             _messageSchedulerContext = messageSchedulerContext;
         }

@@ -15,9 +15,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MessageScheduler.Service", 
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{F411AB73-173A-4685-9831-C95A650298C9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MessageScheduler.Models.Tests", "tests\MessageScheduler.Models.Tests\MessageScheduler.Models.Tests.csproj", "{5EC932B9-B2F8-4A8F-A8F3-D6CC0969D254}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MessageScheduler.Models.Tests", "tests\MessageScheduler.Models.Tests\MessageScheduler.Models.Tests.csproj", "{5EC932B9-B2F8-4A8F-A8F3-D6CC0969D254}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "messageScheduler.Service.Tests", "tests\messageScheduler.Service.Tests\messageScheduler.Service.Tests.csproj", "{30497BEC-2C49-4F56-89FF-A4C01D2B7ACA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MessageScheduler.Service.Tests", "tests\messageScheduler.Service.Tests\MessageScheduler.Service.Tests.csproj", "{30497BEC-2C49-4F56-89FF-A4C01D2B7ACA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
