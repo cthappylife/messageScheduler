@@ -6,9 +6,6 @@ namespace MessageScheduler.Models.Schedules
     {
         public DateTime Date { get; set; }
 
-        public override bool IsTodayScheduled()
-        {
-            return DateTime.Today == Date.Date;
-        }
+        public override bool IsTodayScheduled() => DateTime.Today == Date.Date;
     }
 }

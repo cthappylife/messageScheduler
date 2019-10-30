@@ -12,16 +12,12 @@ namespace MessageScheduler.Functions
 {
     public class CheckSchedule
     {
-        private readonly MessageSchedulerContext _dbContext;
         private readonly IMessagesQuery _messagesQuery;
 
-        public CheckSchedule(
-            MessageSchedulerContext dbContext,
-            IMessagesQuery messagesQuery)
+        public CheckSchedule(MessageSchedulerContext dbContext, IMessagesQuery messagesQuery)
         {
             _messagesQuery = messagesQuery;
-            _dbContext = dbContext;
-            _dbContext.Database.Migrate();
+            dbContext.Database.Migrate();
         }
 
         [FunctionName("CheckSchedule")]

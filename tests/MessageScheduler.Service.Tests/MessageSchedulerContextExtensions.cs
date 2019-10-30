@@ -12,36 +12,58 @@ namespace MessageScheduler.Service.Tests
             this MessageSchedulerContext context, 
             IEnumerable<ScheduledMessage> messages)
         {
-            context.Receivers.AddRange(messages.Select(x => x.Receiver));
-            AddSchedules(context, messages);
-            context.ScheduledMessages.AddRange(messages.ToList());
+            var scheduledMessages = messages.ToList();
+            context
+                .AddReceivers(scheduledMessages.Select(x => x.Receiver))
+                .AddSchedules(scheduledMessages.Select(x => x.Schedule))
+                .AddScheduledMessages(scheduledMessages);
             context.SaveChanges();
+
             return context;
         }
 
-        private static void AddSchedules(
-            MessageSchedulerContext context, 
+        private static MessageSchedulerContext AddScheduledMessages(
+            this MessageSchedulerContext context,
             IEnumerable<ScheduledMessage> messages)
         {
-            foreach (var message in messages)
+            context.ScheduledMessages.AddRange(messages);
+            return context;
+        }
+
+        private static MessageSchedulerContext AddReceivers(
+            this MessageSchedulerContext context,
+            IEnumerable<Receiver> receivers)
+        {
+            context.Receivers.AddRange(receivers);
+            return context;
+        }
+
+        private static MessageSchedulerContext AddSchedules(
+            this MessageSchedulerContext context,
+            IEnumerable<Schedule> schedules)
+        {
+            foreach (var schedule in schedules) AddSchedule(context, schedule);
+            return context;
+        }
+
+        private static void AddSchedule(MessageSchedulerContext context, Schedule schedule)
+        {
+            switch (schedule)
             {
-                switch (message.Schedule)
-                {
-                    case DailySchedule dailySchedule:
-                        context.DailySchedules.Add(dailySchedule);
-                        break;
-                    case WeeklySchedule weeklySchedule:
-                        context.WeeklySchedules.Add(weeklySchedule);
-                        break;
-                    case MonthlySchedule monthlySchedule:
-                        context.MonthlySchedules.Add(monthlySchedule);
-                        break;
-                    case CustomSchedule customSchedule:
-                        context.CustomSchedules.Add(customSchedule);
-                        break;
-                    case null:
-                        continue;
-                }
+                case DailySchedule dailySchedule:
+                    context.DailySchedules.Add(dailySchedule);
+                    return;
+                case WeeklySchedule weeklySchedule:
+                    context.WeeklySchedules.Add(weeklySchedule);
+                    return;
+                case MonthlySchedule monthlySchedule:
+                    context.MonthlySchedules.Add(monthlySchedule);
+                    return;
+                case CustomSchedule customSchedule:
+                    context.CustomSchedules.Add(customSchedule);
+                    return;
+                default:
+                    return;
             }
         }
     }

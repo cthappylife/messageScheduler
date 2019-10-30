@@ -7,11 +7,6 @@ using Microsoft.EntityFrameworkCore;
 
 namespace MessageScheduler.Service
 {
-    public interface IMessagesQuery
-    {
-        IEnumerable<ScheduledMessage> GetMessagesToSend();
-    }
-
     public class MessagesQuery : IMessagesQuery
     {
         private readonly MessageSchedulerContext _messageSchedulerContext;
@@ -26,12 +21,12 @@ namespace MessageScheduler.Service
             var messages = _messageSchedulerContext.ScheduledMessages
                 .Include(x => x.Schedule)
                 .Include(x => x.Receiver)
+                .Where(x => x.IsActive
+                            && x.Schedule != null
+                            && x.LastSentDate != DateTime.Today)
                 .ToArray();
 
-            return  messages.Where(x => x.IsActive
-                            && x.Schedule != null
-                            && x.Schedule.IsTodayScheduled()
-                            && x.LastSentDate != DateTime.Today);
+            return messages.Where(x => x.Schedule.IsTodayScheduled());
         }
     }
 }

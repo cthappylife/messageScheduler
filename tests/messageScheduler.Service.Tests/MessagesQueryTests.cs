@@ -107,20 +107,5 @@ namespace messageScheduler.Service.Tests
             dbContext.Database.EnsureCreated();
             return dbContext;
         }
-
-        private class FakeCustomSchedule : CustomSchedule
-        {
-            private readonly bool _isTodayScheduled;
-
-            public FakeCustomSchedule(bool isTodayScheduled)
-            {
-                _isTodayScheduled = isTodayScheduled;
-            }
-
-            public override bool IsTodayScheduled()
-            {
-                return _isTodayScheduled;
-            }
-        }
     }
 }
