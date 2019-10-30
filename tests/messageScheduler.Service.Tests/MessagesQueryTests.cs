@@ -18,6 +18,7 @@ namespace messageScheduler.Service.Tests
             {
                 IsActive = false,
                 Message = "hello I am inactive",
+                Receiver = new Receiver { Name = "superman", PhoneNumber = "00358999999999" },
                 Schedule = new DailySchedule()
             };
             var context = CreateDbContext(nameof(GetMessagesToSend_InactiveMessage_DoesNotGet))
@@ -34,6 +35,7 @@ namespace messageScheduler.Service.Tests
             {
                 IsActive = true,
                 Message = "hello I do not have schedule",
+                Receiver = new Receiver { Name = "superman", PhoneNumber = "00358999999999" },
                 Schedule = null
             };
             var context = CreateDbContext(nameof(GetMessagesToSend_MessageWithoutSchedule_DoesNotGet))
@@ -50,7 +52,8 @@ namespace messageScheduler.Service.Tests
             {
                 IsActive = true,
                 Message = "hello I am not scheduled to today",
-                Schedule = new FakeSchedule(false)
+                Receiver = new Receiver { Name = "superman", PhoneNumber = "00358999999999" },
+                Schedule = new FakeCustomSchedule(false)
             };
             var context = CreateDbContext(nameof(GetMessagesToSend_MessageNotScheduledToToday_DoesNotGet))
                 .StubScheduledMessages(new[] { message });
@@ -66,7 +69,8 @@ namespace messageScheduler.Service.Tests
             {
                 IsActive = true,
                 Message = "hello I am scheduled to today but already sent",
-                Schedule = new FakeSchedule(true),
+                Receiver = new Receiver { Name = "superman", PhoneNumber = "00358999999999" },
+                Schedule = new FakeCustomSchedule(true),
                 LastSentDate = DateTime.Today
             };
             var context = CreateDbContext(nameof(GetMessagesToSend_MessagesScheduledToToday_ButAlreadySent_DoesNotGet))
@@ -83,7 +87,8 @@ namespace messageScheduler.Service.Tests
             {
                 IsActive = true,
                 Message = "hello I am scheduled to today and not sent yet",
-                Schedule = new FakeSchedule(true),
+                Receiver = new Receiver { Name = "superman", PhoneNumber = "00358999999999" },
+                Schedule = new FakeCustomSchedule(true),
                 LastSentDate = null
             };
             var context = CreateDbContext(nameof(GetMessagesToSend_MessagesScheduledToToday_NotSentYet_Get))
@@ -103,11 +108,11 @@ namespace messageScheduler.Service.Tests
             return dbContext;
         }
 
-        private class FakeSchedule : Schedule
+        private class FakeCustomSchedule : CustomSchedule
         {
             private readonly bool _isTodayScheduled;
 
-            public FakeSchedule(bool isTodayScheduled)
+            public FakeCustomSchedule(bool isTodayScheduled)
             {
                 _isTodayScheduled = isTodayScheduled;
             }
