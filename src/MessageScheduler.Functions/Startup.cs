@@ -37,11 +37,12 @@ namespace MessageScheduler.Functions
         private string GetBasePath()
         {
             if (IsDevelopmentEnvironment())
-                return Environment.GetEnvironmentVariable("AzureWebJobsScriptRoot") ?? throw new ArgumentException("Missing environment variable 'AzureWebJobsScriptRoot'"); ;
+                return Environment.GetEnvironmentVariable("AzureWebJobsScriptRoot") ?? throw new ArgumentException("Missing environment variable 'AzureWebJobsScriptRoot'");
             var home = Environment.GetEnvironmentVariable("HOME") ?? throw new ArgumentException("Missing environment variable 'HOME'");
             return System.IO.Path.Combine(home, "site", "wwwroot");
         }
 
-        private bool IsDevelopmentEnvironment() => "Development".Equals(Environment.GetEnvironmentVariable("AZURE_FUNCTIONS_ENVIRONMENT"), StringComparison.OrdinalIgnoreCase);
+        private bool IsDevelopmentEnvironment() => 
+            "Development".Equals(Environment.GetEnvironmentVariable("AZURE_FUNCTIONS_ENVIRONMENT"), StringComparison.OrdinalIgnoreCase);
     }
 }

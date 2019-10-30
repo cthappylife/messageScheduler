@@ -8,10 +8,10 @@ namespace MessageScheduler.Models.Schedules
 
         public override bool IsTodayScheduled()
         {
-            return ContainsDayOfWeek(WeekDays, DateTime.Today.DayOfWeek); // DayOfWeek is 0 to 6, sunday 0
+            return IsDayOfWeekScheduled(WeekDays, DateTime.Today.DayOfWeek); // DayOfWeek is 0 to 6, sunday 0
         }
 
-        private static bool ContainsDayOfWeek(WeekDays weekDays, DayOfWeek dayOfWeek)
+        private static bool IsDayOfWeekScheduled(WeekDays weekDays, DayOfWeek dayOfWeek)
         {
             return IsBitSet((byte)weekDays, (int)dayOfWeek);
         }

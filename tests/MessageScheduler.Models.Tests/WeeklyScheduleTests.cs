@@ -25,7 +25,7 @@ namespace MessageScheduler.Models.Tests
         }
 
         [Fact]
-        public void IsTodayScheduled_ScheduledWeekDaysContainsToday_ReturnsTrue()
+        public void IsTodayScheduled_ScheduledWeekDaysContainToday_ReturnsTrue()
         {
             var weekDayOfToday = ConvertToWeekDay(DateTime.Today);
             var weekDayOfTomorrow = ConvertToWeekDay(DateTime.Today.AddDays(1));
@@ -38,7 +38,7 @@ namespace MessageScheduler.Models.Tests
         }
 
         [Fact]
-        public void IsTodayScheduled_ScheduledWeekDaysDoesNotContainToday_ReturnsFalse()
+        public void IsTodayScheduled_ScheduledWeekDaysDoNotContainToday_ReturnsFalse()
         {
             var weekDayOfTomorrow = ConvertToWeekDay(DateTime.Today.AddDays(1));
             var weekDayOfDayAfterTomorrow = ConvertToWeekDay(DateTime.Today.AddDays(2));

@@ -9,9 +9,9 @@ namespace MessageScheduler.Models.Schedules
         public override bool IsTodayScheduled()
         {
             var today = DateTime.Today;
-            var executionDayThisMonth = new DateTime(today.Year, today.Month, MonthDay);
+            var scheduledDay = new DateTime(today.Year, today.Month, MonthDay);
 
-            return today == executionDayThisMonth;
+            return today == scheduledDay;
         }
     }
 }
